@@ -1,7 +1,7 @@
 /* App.css - 应用程序主样式 */
 .layout-container {
-  height: 600px;
-  width: 800px;
+  height: 700px;
+  width: 1000px;
   border-radius: 4px;
   overflow: hidden;
 }

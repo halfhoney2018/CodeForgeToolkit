@@ -405,12 +405,12 @@ const RandomGenerator: React.FC = () => {
               <Divider style={{ margin: '8px 0' }} />
               
               {generatedInfo.length > 0 ? (
-                <div style={{ overflow: 'auto' }}>
+                <div style={{ overflow: 'auto', maxHeight: '500px' }}>
                   <Table
                     columns={columns}
                     data={generatedInfo}
                     scroll={{ x: 1300 }}
-                    pagination={{ pageSize: 10 }}
+                    pagination={{ pageSize: 15 }}
                     rowKey="id"
                     size="small"
                     border={true}

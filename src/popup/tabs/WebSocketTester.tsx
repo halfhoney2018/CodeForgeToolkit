@@ -425,7 +425,7 @@ const WebSocketTester: React.FC = () => {
         <div
           ref={messagesContainerRef}
           style={{
-            height: '300px',
+            height: '380px',
             overflowY: 'auto',
             border: '1px solid var(--color-border-2)',
             borderRadius: '4px',
