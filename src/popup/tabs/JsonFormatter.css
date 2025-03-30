@@ -87,6 +87,60 @@
   line-height: 1.5;
 }
 
+/* 暗色主题样式 */
+.editor-dark {
+  background-color: #232324 !important;
+}
+
+.editor-dark .cm-editor {
+  border-color: #333335 !important;
+  background-color: #232324 !important;
+}
+
+/* 亮色主题样式 */
+.editor-light {
+  background-color: #f7f8fa !important;
+}
+
+.editor-light .cm-editor {
+  border-color: #e5e6eb !important;
+  background-color: #f7f8fa !important;
+}
+
+/* JSON树形视图样式 */
+.json-tree-container {
+  height: 300px;
+  overflow: auto;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.json-tree-container.light {
+  background-color: #f7f8fa;
+  border: 1px solid #e5e6eb;
+  color: #1d2129;
+}
+
+.json-tree-container.dark {
+  background-color: #232324;
+  border: 1px solid #333335;
+  color: #f2f3f5;
+}
+
+/* 树形视图内部样式调整 */
+.json-tree-container ul {
+  padding-left: 16px !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+.json-tree-container ul li {
+  position: relative;
+  padding: 2px 0 !important;
+  list-style: none !important;
+}
+
 /* 响应式调整 */
 @media (min-width: 992px) {
   .json-editor-container {

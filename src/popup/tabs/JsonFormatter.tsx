@@ -13,7 +13,8 @@ import {
   Switch,
   InputNumber,
   Tooltip,
-  Modal
+  Modal,
+  Radio
 } from '@arco-design/web-react';
 import {
   IconCode,
@@ -31,6 +32,7 @@ import {
 } from '@arco-design/web-react/icon';
 import CodeMirror from '@uiw/react-codemirror';
 import { json } from '@codemirror/lang-json';
+import { JSONTree } from 'react-json-tree';
 import useJsonFormatter from '../../hooks/useJsonFormatter';
 import PageHeader from '../../components/PageHeader';
 import SafeCopy from '../../components/SafeCopy';
@@ -39,6 +41,51 @@ import './JsonFormatter.css';
 const { Text } = Typography;
 const FormItem = Space;
 const TabPane = Tabs.TabPane;
+const RadioGroup = Radio.Group;
+
+// JSON树形展示主题
+const jsonTreeTheme = {
+  scheme: 'arco',
+  author: 'codeforge',
+  base00: '#f7f8fa', // 背景色
+  base01: '#e5e6eb', // 边框色
+  base02: '#c9cdd4', // 行号背景
+  base03: '#86909c', // 注释
+  base04: '#4e5969', // 次要文字
+  base05: '#1d2129', // 主要文字
+  base06: '#f2f3f5', // 高亮背景
+  base07: '#ffffff', // 选中项
+  base08: '#f53f3f', // 错误、删除
+  base09: '#ff7d00', // 数值、常量
+  base0A: '#ffb400', // 类、属性
+  base0B: '#00b42a', // 字符串
+  base0C: '#14c9c9', // 支持类型
+  base0D: '#165dff', // 键名
+  base0E: '#722ed1', // 关键字
+  base0F: '#eb0aa4'  // 弃用
+};
+
+// JSON树形展示暗色主题
+const jsonTreeDarkTheme = {
+  scheme: 'arco-dark',
+  author: 'codeforge',
+  base00: '#232324', // 背景色
+  base01: '#333335', // 边框色
+  base02: '#424243', // 行号背景
+  base03: '#86909c', // 注释
+  base04: '#c9cdd4', // 次要文字
+  base05: '#f2f3f5', // 主要文字
+  base06: '#17171a', // 高亮背景
+  base07: '#1d1d1f', // 选中项
+  base08: '#f53f3f', // 错误、删除
+  base09: '#ff7d00', // 数值、常量
+  base0A: '#ffb400', // 类、属性
+  base0B: '#00b42a', // 字符串
+  base0C: '#14c9c9', // 支持类型
+  base0D: '#4080ff', // 键名
+  base0E: '#722ed1', // 关键字
+  base0F: '#eb0aa4'  // 弃用
+};
 
 /**
  * JSON格式化工具组件
@@ -70,12 +117,24 @@ const JsonFormatter: React.FC = () => {
 
   // 状态
   const [activeTab, setActiveTab] = useState<string>('editor');
+  const [viewMode, setViewMode] = useState<'code' | 'tree'>('code');
   const [historyVisible, setHistoryVisible] = useState<boolean>(false);
   const [snippetsVisible, setSnippetsVisible] = useState<boolean>(false);
   const [settingsVisible, setSettingsVisible] = useState<boolean>(false);
   const [saveModalVisible, setSaveModalVisible] = useState<boolean>(false);
   const [snippetName, setSnippetName] = useState<string>('');
+  const [editorTheme, setEditorTheme] = useState<'light' | 'dark'>('light');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // 尝试解析JSON以用于树形视图
+  const getParsedJson = () => {
+    try {
+      if (!jsonOutput) return null;
+      return JSON.parse(jsonOutput);
+    } catch (e) {
+      return null;
+    }
+  };
 
   // 处理格式化
   const handleFormat = () => {
@@ -164,6 +223,11 @@ const JsonFormatter: React.FC = () => {
     setSnippetName('');
   };
 
+  // 切换主题
+  const toggleTheme = () => {
+    setEditorTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
   // 渲染编辑器Tab
   const renderEditorTab = () => (
     <div className="json-editor-container">
@@ -199,12 +263,13 @@ const JsonFormatter: React.FC = () => {
           height="300px"
           extensions={[json()]}
           onChange={(value) => setJsonInput(value)}
-          theme="light"
+          theme={editorTheme}
           basicSetup={{
             lineNumbers: true,
             highlightActiveLine: true,
             foldGutter: true,
           }}
+          className={`editor-${editorTheme}`}
         />
         <div className="json-actions">
           <Space>
@@ -213,6 +278,12 @@ const JsonFormatter: React.FC = () => {
             <Button type="outline" icon={<IconBulb />} onClick={handleRepair}>修复</Button>
             <Button type="outline" status="warning" onClick={handleValidate}>验证</Button>
             <Button icon={<IconSave />} onClick={handleSaveSnippet}>保存代码片段</Button>
+            <Button 
+              type={editorTheme === 'dark' ? 'primary' : 'secondary'} 
+              onClick={toggleTheme}
+            >
+              {editorTheme === 'light' ? '暗色主题' : '亮色主题'}
+            </Button>
           </Space>
         </div>
       </div>
@@ -221,21 +292,50 @@ const JsonFormatter: React.FC = () => {
 
       <div className="json-output-container">
         <div className="json-panel-header">
-          <Text>输出结果</Text>
+          <Space>
+            <Text>输出结果</Text>
+            <RadioGroup 
+              type="button" 
+              defaultValue="code" 
+              value={viewMode}
+              onChange={value => setViewMode(value)}
+            >
+              <Radio value="code">代码视图</Radio>
+              <Radio value="tree">树形视图</Radio>
+            </RadioGroup>
+          </Space>
           <SafeCopy text={jsonOutput} tip="已复制到剪贴板" />
         </div>
-        <CodeMirror
-          value={jsonOutput}
-          height="300px"
-          extensions={[json()]}
-          readOnly={true}
-          theme="light"
-          basicSetup={{
-            lineNumbers: true,
-            highlightActiveLine: false,
-            foldGutter: true,
-          }}
-        />
+        
+        {viewMode === 'code' ? (
+          <CodeMirror
+            value={jsonOutput}
+            height="300px"
+            extensions={[json()]}
+            readOnly={true}
+            theme={editorTheme}
+            basicSetup={{
+              lineNumbers: true,
+              highlightActiveLine: false,
+              foldGutter: true,
+            }}
+            className={`editor-${editorTheme}`}
+          />
+        ) : (
+          <div className={`json-tree-container ${editorTheme === 'dark' ? 'dark' : 'light'}`}>
+            {getParsedJson() ? (
+              <JSONTree 
+                data={getParsedJson()} 
+                theme={editorTheme === 'light' ? jsonTreeTheme : jsonTreeDarkTheme}
+                invertTheme={false}
+                shouldExpandNodeInitially={() => true}
+              />
+            ) : (
+              <Empty description="无效的JSON或尚未生成输出" />
+            )}
+          </div>
+        )}
+        
         {jsonError && (
           <div className="json-error">
             <Text type="error">{jsonError}</Text>
@@ -286,6 +386,32 @@ const JsonFormatter: React.FC = () => {
           <Tooltip content="将Unicode字符转换为\uXXXX编码格式">
             <IconBulb style={{ cursor: 'help' }} />
           </Tooltip>
+        </FormItem>
+
+        <Divider />
+        
+        <FormItem align="center">
+          <Text>编辑器主题:</Text>
+          <RadioGroup 
+            type="button" 
+            value={editorTheme}
+            onChange={value => setEditorTheme(value)}
+          >
+            <Radio value="light">亮色</Radio>
+            <Radio value="dark">暗色</Radio>
+          </RadioGroup>
+        </FormItem>
+        
+        <FormItem align="center">
+          <Text>默认视图:</Text>
+          <RadioGroup 
+            type="button" 
+            value={viewMode}
+            onChange={value => setViewMode(value)}
+          >
+            <Radio value="code">代码视图</Radio>
+            <Radio value="tree">树形视图</Radio>
+          </RadioGroup>
         </FormItem>
       </Space>
     </Drawer>
