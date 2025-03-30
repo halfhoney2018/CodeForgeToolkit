@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Layout, Menu, Button, ConfigProvider } from '@arco-design/web-react';
 import { 
-  IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd
+  IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd, IconImage
 } from '@arco-design/web-react/icon';
 import './App.css';
 
@@ -12,6 +12,7 @@ import StringEncoder from './popup/tabs/StringEncoder';
 import CryptoTool from './popup/tabs/CryptoTool';
 import WebSocketTester from './popup/tabs/WebSocketTester';
 import RandomGenerator from './popup/tabs/RandomGenerator';
+import ImageConverter from './popup/tabs/ImageConverter';
 
 // 占位符组件 - 后面会实现具体功能
 // const WebSocketTester = () => <div className="module-container">WebSocket测试功能开发中...</div>;
@@ -100,7 +101,11 @@ function App() {
             </Menu.Item>
             <Menu.Item key="random">
               <IconUserAdd style={{ fontSize: 18, marginRight: 6 }} />
-              随机数生成
+              随机信息生成
+            </Menu.Item>
+            <Menu.Item key="imageConverter">
+              <IconImage style={{ fontSize: 18, marginRight: 6 }} />
+              图片Base64转换
             </Menu.Item>
           </Menu>
         </Sider>
@@ -111,6 +116,7 @@ function App() {
           {activeTab === 'crypto' && <CryptoTool />}
           {activeTab === 'websocket' && <WebSocketTester />}
           {activeTab === 'random' && <RandomGenerator />}
+          {activeTab === 'imageConverter' && <ImageConverter />}
         </Content>
       </Layout>
     </ConfigProvider>
