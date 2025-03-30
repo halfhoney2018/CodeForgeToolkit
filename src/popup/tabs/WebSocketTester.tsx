@@ -155,7 +155,7 @@ const WebSocketTester: React.FC = () => {
             <Space direction="vertical" style={{ width: '100%' }}>
               {/* 连接表单 */}
               <Form layout="vertical">
-                <Row gutter={8}>
+                <Row gutter={8} align="center">
                   <Col span={20}>
                     <FormItem 
                       label="服务器地址" 
@@ -490,7 +490,7 @@ const WebSocketTester: React.FC = () => {
         </div>
         
         {/* 消息发送 */}
-        <Row gutter={8}>
+        <Row gutter={8} align="center" style={{ marginTop: '16px' }}>
           <Col span={20}>
             <Input.TextArea
               placeholder="输入要发送的消息，Ctrl+Enter 发送"
@@ -501,12 +501,11 @@ const WebSocketTester: React.FC = () => {
               onKeyPress={handleKeyPress}
             />
           </Col>
-          <Col span={4}>
+          <Col span={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80px' }}>
             <Button
               type="primary"
               icon={<IconSend />}
-              style={{ height: '80px', width: '100%' }}
-              disabled={status !== ConnectionStatus.CONNECTED || !message}
+              disabled={status !== ConnectionStatus.CONNECTED || !message.trim()}
               onClick={sendMessage}
             >
               发送
