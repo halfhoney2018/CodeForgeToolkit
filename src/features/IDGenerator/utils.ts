@@ -145,12 +145,14 @@ const calculateCheckCode = (id: string): string => {
  * @param areaCode 区域代码前缀（可选）
  * @param startYear 出生年份范围开始
  * @param endYear 出生年份范围结束
+ * @param gender 性别，'male'表示男性，'female'表示女性，undefined表示随机
  * @returns 完整的18位身份证号
  */
 export const generateIdCard = (
   areaCode?: string,
   startYear: number = 1950,
-  endYear: number = 2000
+  endYear: number = 2000,
+  gender?: 'male' | 'female'
 ): string => {
   // 如果没有指定区域代码，随机选择一个
   const prefix = areaCode || Object.keys(cityCodes)[getRandomNum(0, Object.keys(cityCodes).length - 1)];
@@ -159,7 +161,23 @@ export const generateIdCard = (
   const birthDate = getRandomDate(startYear, endYear);
   
   // 生成顺序码（3位数字）
-  const sequenceCode = getRandomNum(1, 999).toString().padStart(3, '0');
+  let sequenceCode: string;
+  
+  if (gender) {
+    // 如果指定了性别，生成符合性别的顺序码
+    // 男性为奇数，女性为偶数
+    const base = getRandomNum(1, 499);
+    if (gender === 'male') {
+      // 男性，确保最后一位是奇数
+      sequenceCode = (base * 2 - 1).toString().padStart(3, '0');
+    } else {
+      // 女性，确保最后一位是偶数
+      sequenceCode = (base * 2).toString().padStart(3, '0');
+    }
+  } else {
+    // 随机性别
+    sequenceCode = getRandomNum(1, 999).toString().padStart(3, '0');
+  }
   
   // 组合前17位
   const idCardPrefix = `${prefix}00`.substring(0, 6) + birthDate + sequenceCode;
@@ -177,17 +195,21 @@ export const generateIdCard = (
  * @param areaCode 区域代码前缀（可选）
  * @param startYear 出生年份范围开始
  * @param endYear 出生年份范围结束
+ * @param gender 性别，'male'表示男性，'female'表示女性，undefined表示随机
  * @returns 身份证号数组
  */
 export const batchGenerateIdCards = (
   count: number,
   areaCode?: string,
   startYear: number = 1950,
-  endYear: number = 2000
+  endYear: number = 2000,
+  gender?: 'male' | 'female'
 ): string[] => {
   const result: string[] = [];
+  
   for (let i = 0; i < count; i++) {
-    result.push(generateIdCard(areaCode, startYear, endYear));
+    result.push(generateIdCard(areaCode, startYear, endYear, gender));
   }
+  
   return result;
 };

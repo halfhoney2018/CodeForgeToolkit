@@ -35,6 +35,7 @@ const IDGenerator: React.FC = () => {
   const [selectedCity, setSelectedCity] = useState<string | undefined>(undefined); // 选中的城市
   const [startYear, setStartYear] = useState<number>(1950); // 出生年份范围开始
   const [endYear, setEndYear] = useState<number>(2000); // 出生年份范围结束
+  const [gender, setGender] = useState<'male' | 'female' | undefined>(undefined); // 性别选择
   
   // 城市选项列表 - 根据选中的省份筛选
   const cityOptions = React.useMemo(() => {
@@ -60,36 +61,31 @@ const IDGenerator: React.FC = () => {
     setSelectedCity(value);
   }, []);
   
-  // 生成单个身份证号
+  // 单次生成处理函数
   const handleGenerateOne = useCallback(() => {
     try {
       const areaCode = selectedCity || selectedProvince;
-      const newIdCard = generateIdCard(areaCode, startYear, endYear);
-      setIdCard(newIdCard);
-      Message.success('身份证号生成成功');
-    } catch (error) {
-      Message.error('生成失败，请重试');
-      console.error('生成身份证号失败:', error);
+      const generatedId = generateIdCard(areaCode, startYear, endYear, gender);
+      setIdCard(generatedId);
+      Message.success('身份证生成成功');
+    } catch (err) {
+      Message.error('生成失败，请检查参数');
+      console.error(err);
     }
-  }, [selectedCity, selectedProvince, startYear, endYear]);
+  }, [selectedProvince, selectedCity, startYear, endYear, gender]);
   
-  // 批量生成身份证号
+  // 批量生成处理函数
   const handleGenerateBatch = useCallback(() => {
-    if (batchCount < 1 || batchCount > 10) {
-      Message.warning('请输入1-10之间的数量');
-      return;
-    }
-    
     try {
       const areaCode = selectedCity || selectedProvince;
-      const newIdCards = batchGenerateIdCards(batchCount, areaCode, startYear, endYear);
-      setIdCards(newIdCards);
-      Message.success(`成功生成${batchCount}个身份证号`);
-    } catch (error) {
-      Message.error('批量生成失败，请重试');
-      console.error('批量生成身份证号失败:', error);
+      const generatedIds = batchGenerateIdCards(batchCount, areaCode, startYear, endYear, gender);
+      setIdCards(generatedIds);
+      Message.success(`成功生成 ${batchCount} 个身份证号`);
+    } catch (err) {
+      Message.error('批量生成失败，请检查参数');
+      console.error(err);
     }
-  }, [batchCount, selectedCity, selectedProvince, startYear, endYear]);
+  }, [batchCount, selectedProvince, selectedCity, startYear, endYear, gender]);
   
   // 复制单个身份证号
   const handleCopyIdCard = useCallback(async () => {
@@ -173,41 +169,47 @@ const IDGenerator: React.FC = () => {
       
       <Card title="区域与生日设置" style={{ marginBottom: 20 }}>
         <Space direction="vertical" style={{ width: '100%' }}>
-          <div style={{ display: 'flex', marginBottom: 16 }}>
-            <div style={{ width: '50%', marginRight: 8 }}>
-              <Text style={{ display: 'block', marginBottom: 8 }}>省份</Text>
-              <Select
-                placeholder="选择省份"
-                style={{ width: '100%' }}
-                value={selectedProvince}
-                onChange={handleProvinceChange}
-                allowClear
-              >
-                {Object.entries(provinceCodes).map(([code, name]) => (
-                  <Option key={code} value={code}>
-                    {name} ({code})
-                  </Option>
-                ))}
-              </Select>
-            </div>
-            <div style={{ width: '50%', marginLeft: 8 }}>
-              <Text style={{ display: 'block', marginBottom: 8 }}>城市</Text>
-              <Select
-                placeholder={selectedProvince ? "选择城市" : "请先选择省份"}
-                style={{ width: '100%' }}
-                value={selectedCity}
-                onChange={handleCityChange}
-                disabled={!selectedProvince}
-                allowClear
-              >
-                {cityOptions.map((city) => (
-                  <Option key={city.value} value={city.value}>
-                    {city.label} ({city.value})
-                  </Option>
-                ))}
-              </Select>
-            </div>
-          </div>
+          <Space>
+            <Select
+              placeholder="选择省份（可选）"
+              style={{ width: 160 }}
+              onChange={handleProvinceChange}
+              value={selectedProvince}
+              allowClear
+            >
+              {Object.entries(provinceCodes).map(([code, name]) => (
+                <Option key={code} value={code}>
+                  {name}
+                </Option>
+              ))}
+            </Select>
+            
+            <Select
+              placeholder="选择城市（可选）"
+              style={{ width: 160 }}
+              onChange={handleCityChange}
+              value={selectedCity}
+              allowClear
+              disabled={!selectedProvince}
+            >
+              {cityOptions.map(option => (
+                <Option key={option.value} value={option.value}>
+                  {option.label}
+                </Option>
+              ))}
+            </Select>
+            
+            <Select
+              placeholder="选择性别（可选）"
+              style={{ width: 120 }}
+              onChange={setGender}
+              value={gender}
+              allowClear
+            >
+              <Option key="male" value="male">男性</Option>
+              <Option key="female" value="female">女性</Option>
+            </Select>
+          </Space>
           
           <div style={{ display: 'flex' }}>
             <div style={{ width: '50%', marginRight: 8 }}>
