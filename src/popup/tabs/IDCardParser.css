@@ -1,0 +1,193 @@
+.idcard-parser-container {
+  padding: 16px;
+}
+
+.idcard-parser-container .desc-text {
+  margin-bottom: 20px;
+  color: var(--color-text-secondary);
+}
+
+.input-row {
+  margin-bottom: 16px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.result-container {
+  margin: 16px 0;
+}
+
+.result-header {
+  margin-bottom: 20px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--color-border-2);
+}
+
+.result-id-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.id-number {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-text-1);
+}
+
+.result-content {
+  margin-top: 16px;
+}
+
+.info-card {
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.info-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-card-personal {
+  border-top: 3px solid #165DFF;
+}
+
+.info-card-location {
+  border-top: 3px solid #00B42A;
+}
+
+.info-card-zodiac {
+  border-top: 3px solid #F7BA1E;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border-2);
+  color: var(--color-text-1);
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 0;
+  line-height: 32px;
+  white-space: nowrap;
+}
+
+.info-label {
+  font-weight: 500;
+  min-width: 70px;
+  color: var(--color-text-3);
+  margin-right: 8px;
+}
+
+.info-value {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.highlight {
+  font-weight: 600;
+  color: var(--color-text-1);
+}
+
+.gender-tag {
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.gender-tag.male {
+  background: rgba(22, 93, 255, 0.1);
+  color: #165DFF;
+}
+
+.gender-tag.female {
+  background: rgba(255, 77, 79, 0.1);
+  color: #FF4D4F;
+}
+
+.zodiac-sign, .constellation {
+  font-weight: 600;
+}
+
+.info-value .arco-btn {
+  margin-left: 8px;
+}
+
+.error-container, .empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+}
+
+.history-container {
+  margin-top: 16px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.history-table {
+  margin-bottom: 16px;
+}
+
+.idcard-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 暗色主题适应 */
+.arco-theme-dark .idcard-parser-container .info-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.arco-theme-dark .gender-tag.male {
+  background: rgba(22, 93, 255, 0.2);
+}
+
+.arco-theme-dark .gender-tag.female {
+  background: rgba(255, 77, 79, 0.2);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .result-content {
+    margin-top: 8px;
+  }
+  
+  .id-number {
+    font-size: 16px;
+  }
+  
+  .info-item {
+    white-space: normal;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .arco-col-8 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Layout, Menu, Button, ConfigProvider } from '@arco-design/web-react';
 import { 
   IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd, IconImage, IconPalette, IconCode as IconJson,
-  IconQrcode, IconSearch, IconSwap, IconEdit, IconSubscribe
+  IconQrcode, IconSearch, IconSwap, IconEdit, IconSubscribe, IconScan
 } from '@arco-design/web-react/icon';
 import './App.css';
 
@@ -21,6 +21,7 @@ import RegexTool from './popup/tabs/RegexTool';
 import UnitConverter from './popup/tabs/UnitConverter';
 import ImageProcessor from './popup/tabs/ImageProcessor';
 import FaviconGenerator from './popup/tabs/FaviconGenerator';
+import IDCardParser from './popup/tabs/IDCardParser';
 
 const { Sider, Content } = Layout;
 
@@ -89,6 +90,10 @@ function App() {
               <IconIdcard style={{ fontSize: 18, marginRight: 6 }} />
               身份证生成器
             </Menu.Item>
+            <Menu.Item key="idcardparser">
+              <IconScan style={{ fontSize: 18, marginRight: 6 }} />
+              身份证解析器
+            </Menu.Item>
             <Menu.Item key="timestamp">
               <IconCalendar style={{ fontSize: 18, marginRight: 6 }} />
               时间戳转换
@@ -145,6 +150,7 @@ function App() {
         </Sider>
         <Content className="layout-content">
           {activeTab === 'idgenerator' && <IDGenerator />}
+          {activeTab === 'idcardparser' && <IDCardParser />}
           {activeTab === 'timestamp' && <TimestampConverter />}
           {activeTab === 'encoder' && <StringEncoder />}
           {activeTab === 'crypto' && <CryptoTool />}
