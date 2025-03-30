@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@arco-design/web-react": "^2.53.3",
-    "crypto-js": "^4.1.1",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.246",
-    "@types/crypto-js": "^4.1.2",
+    "@types/crypto-js": "^4.2.2",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
@@ -32,7 +32,12 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.9"
   },
-  "keywords": ["chrome-extension", "development-tools", "react", "arco-design"],
+  "keywords": [
+    "chrome-extension",
+    "development-tools",
+    "react",
+    "arco-design"
+  ],
   "author": "",
   "license": "MIT",
   "description": "开发者多功能工具集，包含身份证生成、时间戳转换、字符串编码、加密解密和WebSocket测试等功能"
