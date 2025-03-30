@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@arco-design/web-react": "^2.53.3",
+    "@arco-design/web-react": "^2.46.0",
     "@codemirror/basic-setup": "^0.20.0",
     "@codemirror/lang-json": "^6.0.1",
     "@codemirror/state": "^6.5.2",
@@ -20,17 +20,21 @@
     "@zxing/browser": "^0.1.5",
     "@zxing/library": "^0.21.3",
     "ace-builds": "^1.39.1",
+    "browser-image-compression": "^2.0.0",
+    "cityinfo-cn": "^1.0.0",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.9",
     "jsqr": "^1.4.0",
-    "qrcode": "^1.5.4",
-    "react": "^18.3.1",
+    "qrcode": "^1.5.1",
+    "react": "^18.2.0",
     "react-ace": "^14.0.1",
     "react-colorful": "^5.6.1",
-    "react-dom": "^18.3.1",
+    "react-dom": "^18.2.0",
+    "react-image-crop": "^10.1.5",
     "react-json-tree": "^0.20.0",
     "react-router-dom": "^6.16.0",
-    "sm-crypto": "^0.3.13"
+    "sm-crypto": "^0.3.13",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.246",

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Layout, Menu, Button, ConfigProvider } from '@arco-design/web-react';
 import { 
   IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd, IconImage, IconPalette, IconCode as IconJson,
-  IconQrcode, IconSearch, IconSwap
+  IconQrcode, IconSearch, IconSwap, IconEdit
 } from '@arco-design/web-react/icon';
 import './App.css';
 
@@ -19,6 +19,7 @@ import JsonFormatter from './popup/tabs/JsonFormatter';
 import QRCodeTool from './popup/tabs/QRCodeTool';
 import RegexTool from './popup/tabs/RegexTool';
 import UnitConverter from './popup/tabs/UnitConverter';
+import ImageProcessor from './popup/tabs/ImageProcessor';
 
 // 占位符组件 - 后面会实现具体功能
 // const WebSocketTester = () => <div className="module-container">WebSocket测试功能开发中...</div>;
@@ -113,6 +114,10 @@ function App() {
               <IconImage style={{ fontSize: 18, marginRight: 6 }} />
               图片Base64转换
             </Menu.Item>
+            <Menu.Item key="imageProcessor">
+              <IconEdit style={{ fontSize: 18, marginRight: 6 }} />
+              图片处理工具
+            </Menu.Item>
             <Menu.Item key="colorTool">
               <IconPalette style={{ fontSize: 18, marginRight: 6 }} />
               颜色工具
@@ -143,6 +148,7 @@ function App() {
           {activeTab === 'websocket' && <WebSocketTester />}
           {activeTab === 'random' && <RandomGenerator />}
           {activeTab === 'imageConverter' && <ImageConverter />}
+          {activeTab === 'imageProcessor' && <ImageProcessor />}
           {activeTab === 'colorTool' && <ColorTool />}
           {activeTab === 'jsonFormatter' && <JsonFormatter />}
           {activeTab === 'qrcodeTool' && <QRCodeTool />}
