@@ -1,0 +1,175 @@
+.converter-card {
+  margin-top: 16px;
+}
+
+.converter-content {
+  padding: 8px 0;
+}
+
+/* 输入输出容器样式 */
+.input-container, .output-container {
+  padding: 12px;
+  border-radius: 4px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  background-color: var(--color-fill-2);
+}
+
+.output-container {
+  background-color: var(--color-primary-light-1);
+}
+
+.unit-input, .unit-output {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  gap: 8px;
+}
+
+.value-input {
+  flex: 1;
+}
+
+.unit-select {
+  width: 140px;
+}
+
+.result-display {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.result-value {
+  font-size: 18px;
+  font-weight: 600;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.unit-description {
+  color: var(--color-text-3);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* 切换按钮样式 */
+.switch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.swap-button {
+  margin-top: 32px;
+}
+
+/* 操作按钮样式 */
+.converter-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 16px 0;
+}
+
+/* 信息区样式 */
+.converter-info {
+  margin-top: 16px;
+  padding: 0 8px;
+}
+
+.info-list {
+  list-style-type: none;
+  padding-left: 16px;
+}
+
+.info-list li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* 历史抽屉样式 */
+.history-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.history-list {
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+.history-item {
+  width: 100%;
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.history-item-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-item-index {
+  font-weight: 500;
+}
+
+.history-item-date {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.history-item-content {
+  display: flex;
+  align-items: center;
+}
+
+/* 暗黑模式适配 */
+.arco-dark .input-container {
+  background-color: var(--color-fill-3);
+}
+
+.arco-dark .output-container {
+  background-color: rgba(var(--primary-3), 0.3);
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .unit-input, .unit-output, .result-display {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .unit-select {
+    width: 100%;
+  }
+  
+  .converter-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
