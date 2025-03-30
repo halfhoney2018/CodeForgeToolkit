@@ -1,0 +1,266 @@
+.qrcode-container {
+  margin-top: 16px;
+}
+
+.qrcode-card {
+  height: 100%;
+}
+
+.qrcode-type-selector {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.form-label {
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.qrcode-form {
+  margin-top: 16px;
+}
+
+.qrcode-result-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.qrcode-result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.qrcode-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #e5e6eb;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.qrcode-image {
+  max-width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+}
+
+.qrcode-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.qrcode-placeholder {
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background-color: #f7f8fa;
+  border: 1px dashed #e5e6eb;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.qrcode-error {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* 扫描页面样式 */
+.qrcode-scan-container {
+  margin-top: 16px;
+}
+
+.qrcode-upload-card {
+  min-height: 320px;
+}
+
+.qrcode-upload-area {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f8fa;
+  border: 1px dashed #e5e6eb;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.qrcode-result-container {
+  margin-top: 24px;
+}
+
+.qrcode-scan-result {
+  padding: 16px;
+  background-color: #f7f8fa;
+  border: 1px solid #e5e6eb;
+  border-radius: 4px;
+}
+
+.qrcode-content-box {
+  margin: 16px 0;
+  padding: 12px;
+  background-color: #ffffff;
+  border: 1px solid #e5e6eb;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.qrcode-content-box pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.qrcode-scan-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 历史记录样式 */
+.qrcode-history-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.qrcode-history-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qrcode-history-image {
+  border: 1px solid #e5e6eb;
+  padding: 2px;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.qrcode-history-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.qrcode-history-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+/* 颜色选择器样式 */
+.color-setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.color-preview {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.color-picker-container {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.color-picker-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* 开关样式 */
+.switch-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+/* 徽章样式 */
+.qrcode-badge {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 10px;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.qrcode-badge-processing {
+  background-color: #e8f7ff;
+  color: #165dff;
+  border: 1px solid #bedaff;
+}
+
+.qrcode-badge-success {
+  background-color: #e8ffea;
+  color: #00b42a;
+  border: 1px solid #aff0b5;
+}
+
+.qrcode-badge-warning {
+  background-color: #fff7e8;
+  color: #ff7d00;
+  border: 1px solid #ffcf8b;
+}
+
+/* 暗黑模式适配 */
+.arco-dark .qrcode-placeholder,
+.arco-dark .qrcode-upload-area,
+.arco-dark .qrcode-scan-result {
+  background-color: #232324;
+  border-color: #333335;
+}
+
+.arco-dark .qrcode-image-container {
+  background-color: #17171a;
+  border-color: #333335;
+}
+
+.arco-dark .qrcode-content-box {
+  background-color: #17171a;
+  border-color: #333335;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .qrcode-type-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .qrcode-type-selector .arco-radio-group {
+    margin-top: 8px;
+  }
+}

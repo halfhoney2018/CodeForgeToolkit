@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Layout, Menu, Button, ConfigProvider } from '@arco-design/web-react';
 import { 
-  IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd, IconImage, IconPalette, IconCode as IconJson
+  IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd, IconImage, IconPalette, IconCode as IconJson,
+  IconQrcode
 } from '@arco-design/web-react/icon';
 import './App.css';
 
@@ -15,6 +16,7 @@ import RandomGenerator from './popup/tabs/RandomGenerator';
 import ImageConverter from './popup/tabs/ImageConverter';
 import ColorTool from './popup/tabs/ColorTool';
 import JsonFormatter from './popup/tabs/JsonFormatter';
+import QRCodeTool from './popup/tabs/QRCodeTool';
 
 // 占位符组件 - 后面会实现具体功能
 // const WebSocketTester = () => <div className="module-container">WebSocket测试功能开发中...</div>;
@@ -117,6 +119,10 @@ function App() {
               <IconJson style={{ fontSize: 18, marginRight: 6 }} />
               JSON格式化
             </Menu.Item>
+            <Menu.Item key="qrcodeTool">
+              <IconQrcode style={{ fontSize: 18, marginRight: 6 }} />
+              二维码工具
+            </Menu.Item>
           </Menu>
         </Sider>
         <Content className="layout-content">
@@ -129,6 +135,7 @@ function App() {
           {activeTab === 'imageConverter' && <ImageConverter />}
           {activeTab === 'colorTool' && <ColorTool />}
           {activeTab === 'jsonFormatter' && <JsonFormatter />}
+          {activeTab === 'qrcodeTool' && <QRCodeTool />}
         </Content>
       </Layout>
     </ConfigProvider>

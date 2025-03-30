@@ -58,7 +58,7 @@ const useJsonFormatter = () => {
   /**
    * Unicode转义处理
    */
-  const escapeUnicodeReplacer = useCallback((key: string, value: any): any => {
+  const escapeUnicodeReplacer = useCallback((_key: string, value: any): any => {
     if (typeof value === 'string') {
       return value.replace(/[^\x00-\x7F]/g, char => {
         const hex = char.charCodeAt(0).toString(16);
