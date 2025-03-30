@@ -44,7 +44,7 @@ export interface ConnectionHistory {
  */
 const useWebSocketTester = () => {
   // 连接 URL
-  const [url, setUrl] = useState<string>('');
+  const [url, setUrl] = useState<string>('ws://124.222.6.60:8800');
   // 发送的消息
   const [message, setMessage] = useState<string>('');
   // 连接状态

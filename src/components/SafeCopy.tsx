@@ -2,19 +2,27 @@ import { FC, ReactNode } from 'react';
 import { Tooltip, Message } from '@arco-design/web-react';
 
 export interface SafeCopyProps {
-  content: string;
+  text: string;
+  tip?: string;
   placement?: 'top' | 'right' | 'bottom' | 'left';
-  children: ReactNode;
+  className?: string;
+  children?: ReactNode;
 }
 
 /**
  * 安全复制组件，提供复制功能和视觉反馈
  */
-const SafeCopy: FC<SafeCopyProps> = ({ content, placement = 'top', children }) => {
+const SafeCopy: FC<SafeCopyProps> = ({ 
+  text, 
+  tip = '复制到剪贴板', 
+  placement = 'top', 
+  className = '',
+  children 
+}) => {
   const handleCopy = () => {
     try {
       // 使用 Clipboard API 复制内容
-      navigator.clipboard.writeText(content).then(
+      navigator.clipboard.writeText(text).then(
         () => {
           Message.success('已复制到剪贴板');
         },
@@ -30,9 +38,13 @@ const SafeCopy: FC<SafeCopyProps> = ({ content, placement = 'top', children }) =
   };
 
   return (
-    <Tooltip content="复制到剪贴板" position={placement}>
-      <span onClick={handleCopy} style={{ cursor: 'pointer' }}>
-        {children}
+    <Tooltip content={tip} position={placement}>
+      <span onClick={handleCopy} style={{ cursor: 'pointer' }} className={className}>
+        {children || (
+          <i className="icon-copy" style={{ marginLeft: 4 }}>
+            📋
+          </i>
+        )}
       </span>
     </Tooltip>
   );

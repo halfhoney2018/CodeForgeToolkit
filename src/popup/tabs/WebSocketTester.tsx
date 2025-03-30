@@ -288,14 +288,14 @@ const WebSocketTester: React.FC = () => {
                 border: '1px solid var(--color-border-2)', 
                 borderRadius: 4
               }}>
-                <Button
-                  type="text"
+                <div
                   onClick={() => setActiveTab(activeTab === 'advanced' ? 'connection' : 'advanced')}
                   style={{ 
                     width: '100%', 
                     textAlign: 'left', 
                     padding: '10px 16px',
-                    borderBottom: activeTab === 'advanced' ? '1px solid var(--color-border-2)' : 'none'
+                    borderBottom: activeTab === 'advanced' ? '1px solid var(--color-border-2)' : 'none',
+                    cursor: 'pointer'
                   }}
                 >
                   <Space>
@@ -303,7 +303,7 @@ const WebSocketTester: React.FC = () => {
                     <Typography.Text>高级选项</Typography.Text>
                     {activeTab === 'advanced' ? '▲' : '▼'}
                   </Space>
-                </Button>
+                </div>
                 
                 {activeTab === 'advanced' && (
                   <div style={{ padding: '12px 16px' }}>

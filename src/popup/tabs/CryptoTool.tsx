@@ -345,19 +345,21 @@ const CryptoTool: React.FC = () => {
                       )}
                       
                       {/* 高级选项按钮和面板 */}
-                      <div style={{ 
-                        marginTop: 16, 
-                        border: '1px solid var(--color-border-2)', 
-                        borderRadius: 4
-                      }}>
-                        <Button
-                          type="text"
+                      <div 
+                        style={{ 
+                          marginTop: 16, 
+                          border: '1px solid var(--color-border-2)', 
+                          borderRadius: 4
+                        }}
+                      >
+                        <div
                           onClick={() => setShowAdvanced(!showAdvanced)}
                           style={{ 
                             width: '100%', 
                             textAlign: 'left', 
                             padding: '10px 16px',
-                            borderBottom: showAdvanced ? '1px solid var(--color-border-2)' : 'none'
+                            borderBottom: showAdvanced ? '1px solid var(--color-border-2)' : 'none',
+                            cursor: 'pointer'
                           }}
                         >
                           <Space>
@@ -365,7 +367,7 @@ const CryptoTool: React.FC = () => {
                             <Typography.Text>高级选项</Typography.Text>
                             {showAdvanced ? '▲' : '▼'}
                           </Space>
-                        </Button>
+                        </div>
                         
                         {showAdvanced && (
                           <div style={{ padding: '12px 16px' }}>
