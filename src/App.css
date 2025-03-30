@@ -1,9 +1,12 @@
 /* App.css - 应用程序主样式 */
 .layout-container {
-  height: 700px;
-  width: 1000px;
-  border-radius: 4px;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .layout-sider {
