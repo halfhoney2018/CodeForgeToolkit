@@ -1,0 +1,62 @@
+/* App.css - 应用程序主样式 */
+.layout-container {
+  height: 600px;
+  width: 800px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.layout-sider {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.layout-content {
+  padding: 16px;
+  background-color: var(--color-bg-2);
+  overflow-y: auto;
+}
+
+.logo {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  color: var(--color-text-1);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.theme-toggle {
+  margin-left: 8px;
+}
+
+/* 功能模块通用样式 */
+.module-container {
+  padding: 16px;
+  height: 100%;
+}
+
+.module-title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: var(--color-text-1);
+}
+
+.function-card {
+  margin-bottom: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* 版权信息 */
+.footer-info {
+  font-size: 12px;
+  color: var(--color-text-3);
+  text-align: center;
+  padding: 8px 0;
+}
