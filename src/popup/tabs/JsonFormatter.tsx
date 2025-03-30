@@ -117,13 +117,13 @@ const JsonFormatter: React.FC = () => {
 
   // 状态
   const [activeTab, setActiveTab] = useState<string>('editor');
-  const [viewMode, setViewMode] = useState<'code' | 'tree'>('code');
+  const [viewMode, setViewMode] = useState<'code' | 'tree'>('tree');
   const [historyVisible, setHistoryVisible] = useState<boolean>(false);
   const [snippetsVisible, setSnippetsVisible] = useState<boolean>(false);
   const [settingsVisible, setSettingsVisible] = useState<boolean>(false);
   const [saveModalVisible, setSaveModalVisible] = useState<boolean>(false);
   const [snippetName, setSnippetName] = useState<string>('');
-  const [editorTheme, setEditorTheme] = useState<'light' | 'dark'>('light');
+  const [editorTheme, setEditorTheme] = useState<'light' | 'dark'>('dark');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // 尝试解析JSON以用于树形视图
