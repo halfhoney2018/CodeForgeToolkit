@@ -16,12 +16,12 @@
     "@codemirror/state": "^6.5.2",
     "@codemirror/view": "^6.36.5",
     "@types/qrcode": "^1.5.5",
+    "@types/uuid": "^10.0.0",
     "@uiw/react-codemirror": "^4.23.10",
     "@zxing/browser": "^0.1.5",
     "@zxing/library": "^0.21.3",
     "ace-builds": "^1.39.1",
     "browser-image-compression": "^2.0.0",
-    "cityinfo-cn": "^1.0.0",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.9",
     "jsqr": "^1.4.0",
@@ -34,7 +34,7 @@
     "react-json-tree": "^0.20.0",
     "react-router-dom": "^6.16.0",
     "sm-crypto": "^0.3.13",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.246",
