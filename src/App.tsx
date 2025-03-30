@@ -68,7 +68,7 @@ function App() {
           className="layout-sider"
         >
           <div className="logo">
-            <img src="/logo.svg" className="logo-img" alt="Logo" />
+            {/* <img src="/logo.svg" className="logo-img" alt="Logo" /> */}
             <h2>CodeForge</h2>
             <Button
               shape="circle"

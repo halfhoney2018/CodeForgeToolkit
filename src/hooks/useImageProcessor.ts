@@ -5,6 +5,15 @@ import imageCompression from 'browser-image-compression';
 // 图片格式类型
 export type ImageFormat = 'png' | 'jpeg' | 'webp' | 'svg+xml' | 'gif';
 
+// 文件扩展名映射
+const formatToExtension: Record<ImageFormat, string> = {
+  'png': 'png',
+  'jpeg': 'jpg',
+  'webp': 'webp',
+  'svg+xml': 'svg',
+  'gif': 'gif'
+};
+
 // 图片处理历史记录项
 export interface ImageHistoryItem {
   id: string;
@@ -160,12 +169,7 @@ const useImageProcessor = () => {
       
       // 创建文件
       const fileName = imageFile.name.split('.')[0] || 'image';
-      let fileExt = format;
-      if (format === 'svg+xml') {
-        fileExt = 'svg';
-      } else if (format === 'jpeg') {
-        fileExt = 'jpg';
-      }
+      let fileExt = formatToExtension[format];
       
       const convertedFile = new File([blob], `${fileName}.${fileExt}`, {
         type: `image/${format}`
@@ -334,12 +338,7 @@ const useImageProcessor = () => {
       
       // 创建文件
       const fileName = imageFile.name.split('.')[0] || 'image';
-      let fileExt = format;
-      if (format === 'svg+xml') {
-        fileExt = 'svg';
-      } else if (format === 'jpeg') {
-        fileExt = 'jpg';
-      }
+      let fileExt = formatToExtension[format];
       
       const resizedFile = new File([blob], `${fileName}_resized.${fileExt}`, {
         type: `image/${format}`
@@ -441,12 +440,7 @@ const useImageProcessor = () => {
       
       // 创建文件
       const fileName = imageFile.name.split('.')[0] || 'image';
-      let fileExt = format;
-      if (format === 'svg+xml') {
-        fileExt = 'svg';
-      } else if (format === 'jpeg') {
-        fileExt = 'jpg';
-      }
+      let fileExt = formatToExtension[format];
       
       const croppedFile = new File([blob], `${fileName}_cropped.${fileExt}`, {
         type: `image/${format}`
@@ -601,12 +595,7 @@ const useImageProcessor = () => {
       const blob = await response.blob();
       
       // 确定文件扩展名
-      let fileExt = format;
-      if (format === 'svg+xml') {
-        fileExt = 'svg';
-      } else if (format === 'jpeg') {
-        fileExt = 'jpg';
-      }
+      let fileExt = formatToExtension[format];
       
       // 创建文件
       const decodedFile = new File([blob], `${fileName}.${fileExt}`, {

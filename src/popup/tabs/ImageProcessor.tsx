@@ -428,7 +428,7 @@ const ImageProcessor: React.FC = () => {
             max={1}
             step={0.1}
             value={compressionOptions.quality}
-            onChange={(val: number) => setCompressionOptions({ ...compressionOptions, quality: val })}
+            onChange={(val) => setCompressionOptions({ ...compressionOptions, quality: val as number })}
           />
           <div className="quality-labels">
             <span>低质量</span>
@@ -765,13 +765,13 @@ const ImageProcessor: React.FC = () => {
       
       {isProcessing && (
         <div className="processing-overlay">
-          <Spin size="large" tip="处理中..." />
+          <Spin size={40} tip="处理中..." />
         </div>
       )}
       
       {error && (
         <div className="error-message">
-          <Text type="danger">{error}</Text>
+          <Text type="error">{error}</Text>
         </div>
       )}
       
