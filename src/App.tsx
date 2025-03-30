@@ -10,9 +10,10 @@ import IDGenerator from './popup/tabs/IDGenerator';
 import TimestampConverter from './popup/tabs/TimestampConverter';
 import StringEncoder from './popup/tabs/StringEncoder';
 import CryptoTool from './popup/tabs/CryptoTool';
+import WebSocketTester from './popup/tabs/WebSocketTester';
 
 // 占位符组件 - 后面会实现具体功能
-const WebSocketTester = () => <div className="module-container">WebSocket测试功能开发中...</div>;
+// const WebSocketTester = () => <div className="module-container">WebSocket测试功能开发中...</div>;
 
 const { Sider, Content } = Layout;
 
