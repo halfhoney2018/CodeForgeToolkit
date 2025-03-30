@@ -68,12 +68,13 @@ function App() {
           className="layout-sider"
         >
           <div className="logo">
-            <h2>CodeForge Toolkit</h2>
+            <img src="/logo.svg" className="logo-img" alt="Logo" />
+            <h2>CodeForge</h2>
             <Button
               shape="circle"
               type="text"
               onClick={toggleTheme}
-              className="theme-toggle"
+              className="theme-switch"
             >
               {isDarkMode ? '☀️' : '🌙'}
             </Button>

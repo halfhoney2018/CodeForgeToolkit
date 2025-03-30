@@ -1,12 +1,12 @@
-# CodeForge Toolkit - 开发者工具集
+# CodeForge - 开发者工具箱
 
-![CodeForge Toolkit Logo](./public/icon-128.png)
+![CodeForge Logo](./public/logo.svg)
 
-CodeForge Toolkit 是一个功能强大的 Chrome 扩展，为开发者和设计师提供各种实用工具，帮助简化日常工作流程。
+CodeForge 是一个功能强大的 Chrome 扩展，为开发者和设计师提供各种实用工具，帮助简化日常工作流程。
 
 ## 📋 功能概览
 
-CodeForge Toolkit 集成了以下实用工具：
+CodeForge 集成了以下实用工具：
 
 ### 🛠️ 数据生成和转换
 - **身份证生成器** - 生成符合规则的中国身份证号码
@@ -160,4 +160,4 @@ CodeForge Toolkit 集成了以下实用工具：
 
 ---
 
-**CodeForge Toolkit** - 让开发工作更轻松 💻✨
+**CodeForge** - 让开发工作更轻松 💻✨
