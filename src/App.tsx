@@ -9,9 +9,9 @@ import './App.css';
 import IDGenerator from './popup/tabs/IDGenerator';
 import TimestampConverter from './popup/tabs/TimestampConverter';
 import StringEncoder from './popup/tabs/StringEncoder';
+import CryptoTool from './popup/tabs/CryptoTool';
 
 // 占位符组件 - 后面会实现具体功能
-const CryptoTool = () => <div className="module-container">加密解密功能开发中...</div>;
 const WebSocketTester = () => <div className="module-container">WebSocket测试功能开发中...</div>;
 
 const { Sider, Content } = Layout;
