@@ -30,9 +30,16 @@ import {
   IconMinus,
   IconSettings
 } from '@arco-design/web-react/icon';
-import CodeMirror from '@uiw/react-codemirror';
-import { json } from '@codemirror/lang-json';
+import AceEditor from 'react-ace';
 import { JSONTree } from 'react-json-tree';
+
+// Ace编辑器需要的模式和主题
+import 'ace-builds/src-noconflict/mode-json';
+import 'ace-builds/src-noconflict/theme-github';
+import 'ace-builds/src-noconflict/theme-monokai';
+import 'ace-builds/src-noconflict/ext-language_tools';
+import 'ace-builds/src-noconflict/ext-searchbox';
+
 import useJsonFormatter from '../../hooks/useJsonFormatter';
 import PageHeader from '../../components/PageHeader';
 import SafeCopy from '../../components/SafeCopy';
@@ -258,18 +265,24 @@ const JsonFormatter: React.FC = () => {
             </Button>
           </Space>
         </div>
-        <CodeMirror
+        <AceEditor
+          mode="json"
+          theme={editorTheme === 'light' ? 'github' : 'monokai'}
           value={jsonInput}
           height="300px"
-          extensions={[json()]}
           onChange={(value) => setJsonInput(value)}
-          theme={editorTheme}
-          basicSetup={{
-            lineNumbers: true,
-            highlightActiveLine: true,
-            foldGutter: true,
+          width="100%"
+          fontSize={14}
+          showPrintMargin={false}
+          showGutter={true}
+          highlightActiveLine={true}
+          setOptions={{
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            enableSnippets: false,
+            showLineNumbers: true,
+            tabSize: 2,
           }}
-          className={`editor-${editorTheme}`}
         />
         <div className="json-actions">
           <Space>
@@ -308,18 +321,24 @@ const JsonFormatter: React.FC = () => {
         </div>
         
         {viewMode === 'code' ? (
-          <CodeMirror
+          <AceEditor
+            mode="json"
+            theme={editorTheme === 'light' ? 'github' : 'monokai'}
             value={jsonOutput}
             height="300px"
-            extensions={[json()]}
             readOnly={true}
-            theme={editorTheme}
-            basicSetup={{
-              lineNumbers: true,
-              highlightActiveLine: false,
-              foldGutter: true,
+            width="100%"
+            fontSize={14}
+            showPrintMargin={false}
+            showGutter={true}
+            highlightActiveLine={false}
+            setOptions={{
+              enableBasicAutocompletion: false,
+              enableLiveAutocompletion: false,
+              enableSnippets: false,
+              showLineNumbers: true,
+              tabSize: 2,
             }}
-            className={`editor-${editorTheme}`}
           />
         ) : (
           <div className={`json-tree-container ${editorTheme === 'dark' ? 'dark' : 'light'}`}>

@@ -75,36 +75,42 @@
   gap: 8px;
 }
 
-/* CodeMirror样式优化 */
-.cm-editor {
-  border: 1px solid #e5e6eb;
-  border-radius: 4px;
-  overflow: hidden;
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+/* Ace编辑器样式优化 */
+.ace_editor {
+  border-radius: 4px !important;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+  line-height: 1.5 !important;
+  width: 100% !important;
 }
 
-.cm-editor .cm-scroller {
-  line-height: 1.5;
+/* 让编辑器自适应容器宽度 */
+.ace_editor, .ace_scroller {
+  width: 100% !important;
 }
 
-/* 暗色主题样式 */
-.editor-dark {
-  background-color: #232324 !important;
+/* 编辑器光标样式 */
+.ace_cursor {
+  border-left-width: 2px !important;
 }
 
-.editor-dark .cm-editor {
-  border-color: #333335 !important;
-  background-color: #232324 !important;
+/* Monokai主题额外调整 */
+.ace-monokai .ace_gutter {
+  background: #2F3129 !important;
+  color: #8F908A !important;
 }
 
-/* 亮色主题样式 */
-.editor-light {
-  background-color: #f7f8fa !important;
+.ace-monokai .ace_print-margin {
+  width: 1px !important;
+  background: #555651 !important;
 }
 
-.editor-light .cm-editor {
-  border-color: #e5e6eb !important;
-  background-color: #f7f8fa !important;
+.ace-monokai {
+  background-color: #272822 !important;
+  color: #F8F8F2 !important;
+}
+
+.ace-monokai .ace_cursor {
+  color: #F8F8F0 !important;
 }
 
 /* JSON树形视图样式 */
@@ -123,7 +129,7 @@
 }
 
 .json-tree-container.dark {
-  background-color: #232324;
+  background-color: #272822;
   border: 1px solid #333335;
   color: #f2f3f5;
 }
