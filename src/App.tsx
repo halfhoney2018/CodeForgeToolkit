@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Layout, Menu, Button, ConfigProvider } from '@arco-design/web-react';
 import { 
-  IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd, IconImage
+  IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd, IconImage, IconPalette
 } from '@arco-design/web-react/icon';
 import './App.css';
 
@@ -13,6 +13,7 @@ import CryptoTool from './popup/tabs/CryptoTool';
 import WebSocketTester from './popup/tabs/WebSocketTester';
 import RandomGenerator from './popup/tabs/RandomGenerator';
 import ImageConverter from './popup/tabs/ImageConverter';
+import ColorTool from './popup/tabs/ColorTool';
 
 // 占位符组件 - 后面会实现具体功能
 // const WebSocketTester = () => <div className="module-container">WebSocket测试功能开发中...</div>;
@@ -107,6 +108,10 @@ function App() {
               <IconImage style={{ fontSize: 18, marginRight: 6 }} />
               图片Base64转换
             </Menu.Item>
+            <Menu.Item key="colorTool">
+              <IconPalette style={{ fontSize: 18, marginRight: 6 }} />
+              颜色工具
+            </Menu.Item>
           </Menu>
         </Sider>
         <Content className="layout-content">
@@ -117,6 +122,7 @@ function App() {
           {activeTab === 'websocket' && <WebSocketTester />}
           {activeTab === 'random' && <RandomGenerator />}
           {activeTab === 'imageConverter' && <ImageConverter />}
+          {activeTab === 'colorTool' && <ColorTool />}
         </Content>
       </Layout>
     </ConfigProvider>

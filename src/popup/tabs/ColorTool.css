@@ -1,0 +1,78 @@
+.color-preview-container {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.color-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-right: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.color-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.harmony-colors {
+  margin-top: 16px;
+}
+
+.harmony-color-card {
+  height: 100%;
+}
+
+.harmony-color-preview {
+  height: 60px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.harmony-color-preview:hover {
+  transform: scale(1.05);
+}
+
+.harmony-color-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-item,
+.saved-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.history-color-preview,
+.saved-color-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.history-color-info,
+.saved-color-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-card {
+  margin-top: 16px;
+}
