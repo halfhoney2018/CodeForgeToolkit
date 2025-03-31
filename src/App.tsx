@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Layout, Menu, Button, ConfigProvider } from '@arco-design/web-react';
 import { 
   IconCalendar, IconCode, IconLock, IconIdcard, IconMessage, IconUserAdd, IconImage, IconPalette, IconCode as IconJson,
-  IconQrcode, IconSearch, IconSwap, IconEdit, IconSubscribe, IconScan
+  IconQrcode, IconSearch, IconSwap, IconEdit, IconSubscribe, IconScan, IconCommand, IconDesktop, IconFile
 } from '@arco-design/web-react/icon';
 import './App.css';
 
@@ -23,6 +23,9 @@ import ImageProcessor from './popup/tabs/ImageProcessor';
 import FaviconGenerator from './popup/tabs/FaviconGenerator';
 import IDCardParser from './popup/tabs/IDCardParser';
 import PasswordGenerator from './popup/tabs/PasswordGenerator';
+import SSHClient from './popup/tabs/SSHClient';
+import ResponsivePreview from './popup/tabs/ResponsivePreview';
+import FileHasher from './popup/tabs/FileHasher';
 
 const { Sider, Content } = Layout;
 
@@ -107,9 +110,21 @@ function App() {
               <IconLock style={{ fontSize: 18, marginRight: 6 }} />
               加密解密
             </Menu.Item>
+            <Menu.Item key="fileHasher">
+              <IconFile style={{ fontSize: 18, marginRight: 6 }} />
+              文件哈希校验
+            </Menu.Item>
             <Menu.Item key="websocket">
               <IconMessage style={{ fontSize: 18, marginRight: 6 }} />
               WebSocket测试
+            </Menu.Item>
+            <Menu.Item key="sshClient">
+              <IconCommand style={{ fontSize: 18, marginRight: 6 }} />
+              SSH客户端
+            </Menu.Item>
+            <Menu.Item key="responsivePreview">
+              <IconDesktop style={{ fontSize: 18, marginRight: 6 }} />
+              响应式设计预览
             </Menu.Item>
             <Menu.Item key="random">
               <IconUserAdd style={{ fontSize: 18, marginRight: 6 }} />
@@ -159,7 +174,10 @@ function App() {
           {activeTab === 'timestamp' && <TimestampConverter />}
           {activeTab === 'encoder' && <StringEncoder />}
           {activeTab === 'crypto' && <CryptoTool />}
+          {activeTab === 'fileHasher' && <FileHasher />}
           {activeTab === 'websocket' && <WebSocketTester />}
+          {activeTab === 'sshClient' && <SSHClient />}
+          {activeTab === 'responsivePreview' && <ResponsivePreview />}
           {activeTab === 'random' && <RandomGenerator />}
           {activeTab === 'passwordGenerator' && <PasswordGenerator />}
           {activeTab === 'imageConverter' && <ImageConverter />}

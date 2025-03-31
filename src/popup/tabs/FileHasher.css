@@ -1,0 +1,181 @@
+.file-hasher-container {
+  width: 100%;
+  height: 100%;
+}
+
+.desc-text {
+  margin-bottom: 16px;
+  color: var(--color-text-3);
+}
+
+/* 上传区域样式 */
+.upload-card {
+  background-color: var(--color-bg-2);
+}
+
+.upload-area {
+  border: 2px dashed var(--color-border-2);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s;
+  margin-bottom: 16px;
+}
+
+.upload-area:hover {
+  border-color: var(--color-primary-6);
+  background-color: var(--color-fill-1);
+}
+
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-icon {
+  margin-bottom: 16px;
+  color: var(--color-text-3);
+}
+
+.upload-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--color-text-1);
+}
+
+.upload-description {
+  font-size: 14px;
+  color: var(--color-text-3);
+}
+
+/* 进度条样式 */
+.progress-container {
+  margin: 16px 0;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--color-fill-1);
+  border: 1px solid var(--color-border-2);
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.progress-status {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.current-task {
+  font-style: italic;
+}
+
+.hash-progress {
+  margin-top: 8px;
+}
+
+.hash-progress .arco-progress-text {
+  font-weight: bold;
+}
+
+.upload-options {
+  margin-top: 16px;
+}
+
+.algorithm-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* 结果表格样式 */
+.results-card {
+  margin-top: 16px;
+  background-color: var(--color-bg-2);
+}
+
+.file-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-icon {
+  color: var(--color-text-3);
+}
+
+.hash-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hash-cell .arco-typography {
+  flex: 1;
+}
+
+/* 验证区域样式 */
+.verify-card {
+  margin-top: 16px;
+  background-color: var(--color-bg-2);
+}
+
+.verify-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.verify-result {
+  padding: 8px 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.verify-result.success {
+  background-color: var(--color-success-1);
+  color: var(--color-success-6);
+}
+
+.verify-result.error {
+  background-color: var(--color-danger-1);
+  color: var(--color-danger-6);
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  .algorithm-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .verify-actions {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .progress-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
