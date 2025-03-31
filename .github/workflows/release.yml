@@ -35,9 +35,30 @@ jobs:
       
       - name: Generate changelog
         id: changelog
-        uses: metcalfc/changelog-generator@v4.0.1
-        with:
-          myToken: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 提取当前标签版本
+          VERSION=${GITHUB_REF#refs/tags/}
+          
+          # 从CHANGELOG.md中提取该版本的更新内容
+          CHANGELOG_CONTENT=$(awk -v ver="$VERSION" '
+          BEGIN { found=0; content=""; }
+          /^## \[/ { 
+            if (found) exit;
+            if ($0 ~ ver) found=1; 
+          }
+          { if (found && $0 !~ /^## \[/) content = content $0 "\n"; }
+          END { print content; }
+          ' CHANGELOG.md)
+          
+          # 如果没有找到特定版本的更新内容，则使用整个CHANGELOG
+          if [ -z "$CHANGELOG_CONTENT" ]; then
+            CHANGELOG_CONTENT=$(cat CHANGELOG.md)
+          fi
+          
+          # 将更新内容写入输出变量
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG_CONTENT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
       
       - name: Create Release
         id: create_release
