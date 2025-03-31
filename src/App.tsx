@@ -22,6 +22,7 @@ import UnitConverter from './popup/tabs/UnitConverter';
 import ImageProcessor from './popup/tabs/ImageProcessor';
 import FaviconGenerator from './popup/tabs/FaviconGenerator';
 import IDCardParser from './popup/tabs/IDCardParser';
+import PasswordGenerator from './popup/tabs/PasswordGenerator';
 
 const { Sider, Content } = Layout;
 
@@ -112,11 +113,15 @@ function App() {
             </Menu.Item>
             <Menu.Item key="random">
               <IconUserAdd style={{ fontSize: 18, marginRight: 6 }} />
-              随机信息生成
+              随机数生成
+            </Menu.Item>
+            <Menu.Item key="passwordGenerator">
+              <IconLock style={{ fontSize: 18, marginRight: 6 }} />
+              密码生成器
             </Menu.Item>
             <Menu.Item key="imageConverter">
               <IconImage style={{ fontSize: 18, marginRight: 6 }} />
-              图片Base64转换
+              图片转换
             </Menu.Item>
             <Menu.Item key="imageProcessor">
               <IconEdit style={{ fontSize: 18, marginRight: 6 }} />
@@ -156,6 +161,7 @@ function App() {
           {activeTab === 'crypto' && <CryptoTool />}
           {activeTab === 'websocket' && <WebSocketTester />}
           {activeTab === 'random' && <RandomGenerator />}
+          {activeTab === 'passwordGenerator' && <PasswordGenerator />}
           {activeTab === 'imageConverter' && <ImageConverter />}
           {activeTab === 'imageProcessor' && <ImageProcessor />}
           {activeTab === 'faviconGenerator' && <FaviconGenerator />}
