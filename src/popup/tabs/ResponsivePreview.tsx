@@ -9,7 +9,6 @@ import {
   Space,
   Divider,
   Message,
-  Grid,
   Tooltip,
   Tabs,
   Spin,
@@ -34,7 +33,6 @@ import useResponsivePreview from '../../hooks/useResponsivePreview';
 import './ResponsivePreview.css';
 
 const { Title, Text, Paragraph } = Typography;
-const { Row, Col } = Grid;
 const { TabPane } = Tabs;
 const Option = Select.Option;
 
@@ -370,7 +368,7 @@ const ResponsivePreview: React.FC = () => {
           <>
             {previewState.isLoading && (
               <div className="loading-overlay">
-                <Spin size="large" tip="加载中..." />
+                <Spin size={48} tip="加载中..." />
               </div>
             )}
             

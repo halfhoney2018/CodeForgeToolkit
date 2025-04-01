@@ -44,7 +44,7 @@ const useSSHClient = () => {
   const [error, setError] = useState<string | null>(null);
   
   // 模拟WebSocket连接
-  const [socket, setSocket] = useState<WebSocket | null>(null);
+  const [socket] = useState<WebSocket | null>(null);
   
   /**
    * 初始化WebSocket连接
@@ -87,7 +87,7 @@ const useSSHClient = () => {
     setSessions(prev => [...prev, newSession]);
     
     // 模拟连接过程
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       // 在实际实现中，这里应该发送WebSocket消息来建立SSH连接
       setTimeout(() => {
         // 模拟连接成功
@@ -108,7 +108,7 @@ const useSSHClient = () => {
    * 断开SSH会话
    */
   const disconnectSession = useCallback((sessionId: string): Promise<void> => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       // 在实际实现中，这里应该发送WebSocket消息来断开SSH连接
       setTimeout(() => {
         setSessions(prev => 
@@ -160,7 +160,7 @@ const useSSHClient = () => {
     );
     
     // 模拟命令执行
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       // 在实际实现中，这里应该发送WebSocket消息来执行SSH命令
       
       // 更新命令状态为运行中
