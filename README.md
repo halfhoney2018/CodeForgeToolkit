@@ -4,6 +4,10 @@
 
 CodeForge 是一个功能强大的 Chrome 扩展，为开发者和设计师提供各种实用工具，帮助简化日常工作流程。
 
+## 🌐 在线地址
+
+[https://codeforge.mirrorsstores.com/](https://codeforge.mirrorsstores.com/)
+
 ## 📋 功能概览
 
 CodeForge 集成了以下实用工具：
@@ -43,6 +47,9 @@ CodeForge 集成了以下实用工具：
 3. 开启右上角的"开发者模式"
 4. 点击"加载已解压的扩展程序"
 5. 选择本仓库中的 `dist` 目录
+
+### GitHub 仓库
+查看我们的源代码和贡献：[GitHub 仓库](https://github.com/halfhoney2018/CodeForgeToolkit)
 
 ## 📖 使用指南
 
@@ -155,8 +162,8 @@ CodeForge 集成了以下实用工具：
 
 如有问题或建议，请通过以下方式联系我们：
 
-- GitHub Issues: [提交问题](https://github.com/yourusername/codeforge-toolkit/issues)
-- Email: your-email@example.com
+- GitHub Issues: [提交问题](https://github.com/halfhoney2018/CodeForgeToolkit/issues)
+- Email: halfhoney2018@gmail.com
 
 ---
 
