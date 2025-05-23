@@ -146,7 +146,7 @@ function App() {
             </Menu.Item>
             <Menu.Item key="random">
               <IconUserAdd style={{ fontSize: 18, marginRight: 6 }} />
-              随机数生成
+              随机信息生成
             </Menu.Item>
             <Menu.Item key="passwordGenerator">
               <IconLock style={{ fontSize: 18, marginRight: 6 }} />
